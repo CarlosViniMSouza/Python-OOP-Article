@@ -61,3 +61,81 @@ Usando apenas a classe `Dog`, você deve fornecer uma string para o argumento de
 Passar uma string para cada chamada para `.speak()` é repetitivo e inconveniente. Além disso, a string que representa o som que cada instância de `Dog` faz deve ser determinada pelo seu atributo `.breed`, mas aqui você tem que passar manualmente a string correta para `.speak()` toda vez que ela for chamada.
 
 Você pode simplificar a experiência de trabalhar com a classe `Dog` criando uma classe filha para cada raça de cachorro. Isso permite estender a funcionalidade que cada classe filha herda, incluindo a especificação de um argumento padrão para `.speak()`.
+
+### Classes de Pais vs Classes de Filhos
+
+Vamos criar uma classe filha para cada uma das três raças mencionadas acima: Jack Russell Terrier, Dachshund e Bulldog.
+
+Para referência, aqui está a definição completa da classe `Dog`:
+
+```python
+class Dog:
+    species = "Canis familiaris"
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __str__(self):
+        return f"{self.name} is {self.age} years old"
+
+    def speak(self, sound):
+        return f"{self.name} says {sound}"
+```
+
+Lembre-se, para criar uma classe filha, você cria uma nova classe com seu próprio nome e então coloca o nome da classe pai entre parênteses. Adicione o seguinte ao arquivo `dog.py` para criar três novas classes filhas da classe `Dog`:
+
+```python
+class JackRussellTerrier(Dog):
+    pass
+
+class Dachshund(Dog):
+    pass
+
+class Bulldog(Dog):
+    pass
+```
+
+Pressione `F5` para salvar e executar o arquivo. Com as classes filhas definidas, agora você pode instanciar alguns cães de raças específicas na janela interativa:
+
+```python shell
+>>> miles = JackRussellTerrier("Miles", 4)
+
+>>> buddy = Dachshund("Buddy", 9)
+
+>>> jack = Bulldog("Jack", 3)
+
+>>> jim = Bulldog("Jim", 5)
+```
+
+As instâncias de classes filhas herdam todos os atributos e métodos da classe pai:
+
+```python shell
+>>> miles.species
+'Canis familiaris'
+
+>>> buddy.name
+'Buddy'
+
+>>> print(jack)
+# output: Jack is 3 years old
+
+>>> jim.speak("Woof")
+'Jim says Woof'
+```
+
+Observe que `isinstance()` recebe dois argumentos, um objeto e uma classe. No exemplo acima, `isinstance()` verifica se miles é uma instância da classe Dog e retorna True.
+
+Os objetos `miles, buddy, jack` e `jim` são todos instâncias de `Dog`, mas miles não é uma instância de `Bulldog` e `jack` não é uma instância de `Dachshund:`
+
+```python shell
+>>> isinstance(miles, Bulldog)
+False
+
+>>> isinstance(jack, Dachshund)
+False
+```
+
+De maneira mais geral, todos os objetos criados a partir de uma classe filha são instâncias da classe pai, embora possam não ser instâncias de outras classes filhas.
+
+Agora que você criou classes filhas para algumas raças diferentes de cães, vamos dar a cada raça seu próprio som.

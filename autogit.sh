@@ -1,5 +1,5 @@
 git add .
-git commit -m "part04: Sub-Step -> Parent Classes vs Child Classes | code04.py added"
+git commit -m "part04: Sub-Step -> Extend the Functionality of a Parent Class"
 git push -u origin main
 git status
 

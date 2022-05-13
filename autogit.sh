@@ -1,5 +1,5 @@
 git add .
-git commit -m "part03: Step -> Inherit From Other Classes in Python"
+git commit -m "part04: Sub-Step -> Parent Classes vs Child Classes | code04.py added"
 git push -u origin main
 git status
 

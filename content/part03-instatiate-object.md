@@ -100,3 +100,29 @@ Vamos ver o que acontece quando você `print()` o objeto miles:
 >>> print(miles)
 # output: <__main__.Dog object at 0x00aeff70>
 ```
+
+Quando você emite o `print(miles)`, você recebe uma mensagem enigmática informando que miles é um objeto `Dog` no endereço de memória `0x00aeff70`. Esta mensagem não é muito útil. Você pode alterar o que é impresso definindo um método de instância especial chamado `.__str__()`.
+
+Na janela do editor, altere o nome do método `.description()` da classe `Dog` para `.__str__()`:
+
+```python
+class Dog:
+    # Leave other parts of Dog class as-is
+
+    # Replace .description() with __str__()
+    def __str__(self):
+        return f"{self.name} is {self.age} years old"
+```
+
+Salve o arquivo e pressione `F5`. Agora, quando você `print(miles)`, obtém uma saída muito mais amigável:
+
+```python shell
+>>> miles = Dog("Miles", 4)
+
+>>> print(miles)
+'Miles is 4 years old'
+```
+
+Métodos como `.__init__()` e `.__str__()` são chamados de **métodos dunder** porque começam e terminam com sublinhados duplos. Existem muitos métodos dunder que você pode usar para personalizar classes em Python. Embora seja um tópico muito avançado para um livro iniciante em Python, entender os métodos dunder é uma parte importante do domínio de programação orientada a objetos em Python.
+
+Na próxima seção, você verá como levar seu conhecimento um passo adiante e criar aulas a partir de outras aulas.

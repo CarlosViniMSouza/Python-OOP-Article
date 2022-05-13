@@ -1,5 +1,5 @@
 git add .
-git commit -m "part03: Sub-Step -> Instance Methods (Part2)"
+git commit -m "part03: Step -> Inherit From Other Classes in Python"
 git push -u origin main
 git status
 

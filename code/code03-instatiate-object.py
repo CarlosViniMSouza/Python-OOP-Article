@@ -6,7 +6,7 @@ class Dog:
         self.age = age
 
     # Instance method
-    def description(self):
+    def __str__(self):
         return f"{self.name} is {self.age} years old"
 
     # Another instance method

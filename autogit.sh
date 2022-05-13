@@ -1,5 +1,5 @@
 git add .
-git commit -m "part05: Step -> Conclusion"
+git commit -m "part05: Step -> Conclusion added A| Project finished"
 git push -u origin main
 git status
 

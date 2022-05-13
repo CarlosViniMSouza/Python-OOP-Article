@@ -139,3 +139,70 @@ False
 De maneira mais geral, todos os objetos criados a partir de uma classe filha são instâncias da classe pai, embora possam não ser instâncias de outras classes filhas.
 
 Agora que você criou classes filhas para algumas raças diferentes de cães, vamos dar a cada raça seu próprio som.
+
+### Estender a funcionalidade de uma classe pai
+
+Como diferentes raças de cães têm latidos ligeiramente diferentes, você deseja fornecer um valor padrão para o argumento de `som` de seus respectivos métodos `.speak()`. Para fazer isso, você precisa substituir `.speak()` na definição de classe para cada raça.
+
+Para substituir um método definido na classe pai,
+você define um método com o mesmo nome na classe filha. Aqui está o que parece para a classe `JackRussellTerrier`:
+
+```python
+class JackRussellTerrier(Dog):
+    def speak(self, sound="Arf"):
+        return f"{self.name} says {sound}"
+```
+
+Agora `.speak()` é definido na classe JackRussellTerrier com o argumento padrão para som definido como "Arf".
+
+Atualize dog.py com a nova classe JackRussellTerrier e pressione F5 para salvar e executar o arquivo. Agora você pode chamar `.speak()` em uma instância de `JackRussellTerrier` sem passar um argumento para sound:
+
+```python shell
+>>> miles = JackRussellTerrier("Miles", 4)
+
+>>> miles.speak()
+'Miles says Arf'
+```
+
+Às vezes os cachorros latem de formas diferentes, então se Miles ficar bravo e rosnar, você ainda pode chamar `.speak()` com um som diferente:
+
+```python
+>>> miles.speak("Grrr")
+'Miles says Grrr'
+```
+
+Uma coisa a ter em mente sobre herança de classe é que as alterações na classe pai se propagam automaticamente para as classes filhas. Isso ocorre desde que o atributo ou método que está sendo alterado não seja substituído na classe filha.
+
+Por exemplo, na janela do editor, altere a string retornada por `.speak()` na classe Dog:
+
+```python
+class Dog:
+    # Leave other attributes and methods as they are
+
+    # Change the string returned by .speak()
+    def speak(self, sound):
+        return f"{self.name} barks: {sound}"
+```
+
+Salve o arquivo e pressione `F5`. Agora, quando você cria uma nova instância do Bulldog chamada `jim, jim.speak()` retorna a nova string.
+
+Você pode acessar a classe pai de dentro de um método de uma classe filha usando [super()](https://realpython.com/python-super/):
+
+```python
+class JackRussellTerrier(Dog):
+    def speak(self, sound="Arf"):
+        return super().speak(sound)
+```
+
+Quando você chama `super().speak(sound)` dentro do `JackRussellTerrier`, o Python procura na classe pai, `Dog`, um método `.speak()` e o chama com a variável `sound`.
+
+Atualize `dog.py` com a nova classe `JackRussellTerrier`. Salve o arquivo e pressione `F5` para testá-lo na janela interativa:
+
+```python shell
+>>> miles = JackRussellTerrier("Miles", 4)
+
+>>> miles.speak()
+'Miles barks: Arf'
+```
+
+Agora, ao chamar `miles.speak()`, você verá a saída refletindo a nova formatação na classe `Dog`.

@@ -1,5 +1,5 @@
 git add .
-git commit -m "part04: Sub-Step -> Extend the Functionality of a Parent Class"
+git commit -m "part05: Step -> Conclusion"
 git push -u origin main
 git status
 

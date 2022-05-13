@@ -2,7 +2,8 @@ from code04_inherit_classes import Dog
 
 
 class JackRussellTerrier(Dog):
-    pass
+    def speak(self, sound="Arf"):
+        return super().speak(sound)
 
 
 class Dachshund(Dog):

@@ -9,4 +9,4 @@ class Dog:
         return f"{self.name} is {self.age} years old"
 
     def speak(self, sound):
-        return f"{self.name} says {sound}"
+        return f"{self.name} barks: {sound}"
